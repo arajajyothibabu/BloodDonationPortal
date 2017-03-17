@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>blood donation portal </title>
+  <meta name="description" content="blood donation portal">
+  <!-- Latest compiled and minified CSS -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <script type="text/javascript" src="/javascripts/newjs.js"></script>
+</head>
+
+<style>
+  body{
+    padding-top: 40px;
+  }
+</style>
+
+<body data-spy="scroll" data-target="#my-navbar">
+
+<!-- Navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <a href="" class="navbar-brand">Blood Donation portal</a>
+    </div><!-- Navbar Header-->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+
+
+      <ul class="nav navbar-nav">
+        <li><a href="#gallery">Gallery</a>
+        <li><a href="#features">Who can Donate</a>
+
+        <li><a href="#contact">ContactUs</a>
+      </ul>
+    </div>
+  </div><!-- End Container-->
+</nav><!-- End navbar -->
+
+<!-- jumbotron-->
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <img src="/images/123.png"></img>
+    <h1>Blood Donation Portal</h1>
+    <p>Donate Blood, Save Life!!! </p>
+
+    <div class="btn-group">
+      <div class="container">
+
+
+
+        <!-- data-toggle lets you display modal without any JavaScript -->
+        <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#popUpWindow">Login</button>
+        <a href="/signup" class="btn btn-lg btn-success">SignUp</a>
+
+        <div class="modal fade" id="popUpWindow">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- header -->
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Log In</h3>
+              </div>
+
+              <!-- body (form) -->
+              <form action="" method="post" id="fileForm" role="form">
+                <div class="modal-body">
+                  <form role="form">
+                    <div class="form-group">
+
+                      <input class="form-control" required type="text" name="email" id = "email"  onchange="email_validate(this.value);"
+                             placeholder="Email" />
+                      <div class="status" id="status"></div>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                  </form>
+                </div>
+
+                <!-- button -->
+                <div class="modal-footer">
+                  <button class="btn btn-primary btn-block">Submit</button>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div><!-- End container -->
+</div><!-- End jumbotron-->
+
+<!-- Gallery -->
+<div class="container">
+  <section>
+    <div class="page-header" id="gallery">
+      <h2>Gallery</h2>
+    </div>
+
+    <div class="carousel slide" id="screenshot-carousel" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#screenshot-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#screenshot-carousel" data-slide-to="1"></li>
+        <li data-target="#screenshot-carousel" data-slide-to="2"></li>
+        <li data-target="#screenshot-carousel" data-slide-to="3"></li>
+        <li data-target="#screenshot-carousel" data-slide-to="4"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="/images/1.jpg" alt="Text of the image">
+          <div class="carousel-caption">
+
+          </div>
+        </div>
+        <div class="item">
+          <img src="/images/2.jpg" alt="Text of the image">
+          <div class="carousel-caption">
+
+          </div>
+        </div>
+        <div class="item">
+          <img src="/images/3.jpg" alt="Text of the image">
+          <div class="carousel-caption">
+
+          </div>
+        </div>
+        <div class="item">
+          <img src="/images/4.jpg" alt="Text of the image">
+          <div class="carousel-caption">
+
+          </div>
+        </div>
+        <div class="item">
+          <img src="/images/5.jpg" alt="Text of the image">
+          <div class="carousel-caption">
+
+          </div>
+        </div>
+
+      </div><!-- End Carousel inner -->
+      <a href="#screenshot-carousel" class="left carousel-control" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a href="#screenshot-carousel" class="right carousel-control" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div><!-- End Carousel -->
+
+  </section>
+</div>
+
+<!-- features -->
+<div class="container">
+  <section>
+    <div class="page-header" id="features">
+      <h2>Who can Donate...</h2>
+    </div><!-- End Page Header -->
+
+    <div class="row">
+      <div class="col-sm-8">
+        <h3>Who can give Blood</h3>
+        <p>Most people can give blood. You can give blood if you:</p>
+        <ul>
+          <li>are fit and healthy</li>
+          <li>weigh over 7 stone 12 lbs or 50kg</li>
+          <li>are aged between 17 and 66 (or 70 if you have given blood before)</li>
+          <li>are over 70 and have given blood in the last two years</li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <img src="/images/11.jpg" class="img-responsive" alt="image">
+      </div>
+    </div><!-- End row -->
+    <div class="row">
+      <div class="col-sm-8">
+        <h3>How often can I give blood?</h3>
+        <p>Men can give blood every 12 weeks and women can give blood every 16 weeks.</p>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <h3>Check you are able to give blood</h3>
+        <p>If you have an existing medical condition or have a question about your eligibility to give blood you should check the health and travel section before you book an appointment.</p>
+        <ul>
+          <li>receiving treatment</li>
+          <li>taking medication</li>
+          <li>tattoos</li>
+          <li>pregnancy</li>
+          <li>illness</li>
+          <li>cancer</li>
+          <li>received blood, blood products or organs</li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <img src="/images/12.jpg" class="img-responsive" alt="image">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="panel panel-default text-center">
+          <div class="panel-body">
+            <span class="glyphicon glyphicon-ok"></span>
+            <h4>Tips on Blood Donation...</h4>
+            <ul>
+              <li>Have a good meal at least 3 hours before donating blood.</li>
+              <li> Accept the snacks offered to you after the donation, it is vital that you have them. You are recommended to have a good meal later.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="panel panel-default text-center">
+          <div class="panel-body">
+            <span class="glyphicon glyphicon-star"></span>
+            <h4>Tips on Blood Donation...</h4>
+            <ul>
+              <li>Avoid smoking on the day before donating. You can smoke 3 hours after donation.</li>
+              <li>You will not be eligible to donate blood if you have consumed alcohol 48 hours before donation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="panel panel-default text-center">
+          <div class="panel-body">
+            <span class="glyphicon glyphicon-play-circle"></span>
+            <h4>Misconceptions about donating blood...</h4>
+            <ul><li>"I will feel drained and tired after donating" - You will not feel drained or tired if you continue to drink fluids and have a good meal.</li>
+              <li>"It will be painful while donating" - No, you will not feel any pain.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div><!-- end row -->
+
+  </section>
+</div><!-- End Container -->
+
+
+
+<!-- Contact -->
+
+<div class="container">
+  <section>
+    <div class="page-header" id="contact">
+      <h2>Contact Us.<small> Contact us for more.</small></h2>
+    </div><!-- End Page Header -->
+
+    <div class="row">
+      <div class="col-lg-4">
+        <p>Send us a message, or contact us from the address below</p>
+
+
+        <address>
+          <strong>E.Divya</strong></br>
+          G.V.P College of Engineering</br>
+          Madhurawada, PIN:530048</br>
+          Vishakapatnam</br>
+          Andhra pradesh</br>
+          India</br>
+          P: +91 8985875537
+        </address>
+      </div>
+
+      <div class="col-lg-8">
+        <form action="" class="form-horizontal">
+          <div class="form-group">
+            <label for="user-name" class="col-lg-2 control-label">Name</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="user-name" placeholder="Enter you name">
+            </div>
+          </div><!-- End form group -->
+
+          <div class="form-group">
+            <label for="user-email" class="col-lg-2 control-label">Email</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="user-email" placeholder="Enter you Email Address">
+            </div>
+          </div><!-- End form group -->
+
+          <div class="form-group">
+            <label for="user-url" class="col-lg-2 control-label">Your Website</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="user-email" placeholder="If you have Any.">
+            </div>
+          </div><!-- End form group -->
+
+          <div class="form-group">
+            <label for="user-message" class="col-lg-2 control-label">Any Message</label>
+            <div class="col-lg-10">
+                  <textarea name="user-message" id="user-message" class="form-control"
+                            cols="20" rows="10" placeholder="Enter your Message"></textarea>
+            </div>
+          </div><!-- End form group -->
+
+          <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+              <button type="submit" class="btn btn-primary">Submit</button>
+
+            </div>
+          </div>
+
+
+
+        </form>
+      </div>
+    </div><!-- End the row -->
+
+  </section>
+</div>
+
+<!-- Footer -->
+
+
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>

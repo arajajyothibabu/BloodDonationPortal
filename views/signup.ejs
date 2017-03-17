@@ -1,0 +1,130 @@
+<html>
+<head>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/newjs.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/newcss.css">
+    <style>
+        body {
+            background-image: url("/images/blood.png");
+            background-repeat: no-repeat;
+            background-size:600px 600px;
+            background-position:right;
+
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="" method="post" id="fileForm" role="form">
+                <fieldset><legend class="text-center">Sign Up by giving Valid Information<span class="req"></span></legend>
+
+
+
+                    <div class="form-group col-xs-4">
+                        <label for="firstname"> First name: </label>
+                        <input class="form-control" type="text" name="firstname" id = "txt" onkeyup = "Validate(this)" required />
+                        <div id="errFirst"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-4">
+                        <label for="lastname"> Last name: </label>
+                        <input class="form-control" type="text" name="lastname" id = "txt" onkeyup = "Validate(this)" placeholder="hyphen or single quote OK" required />
+                        <div id="errLast"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-4">
+                        <label for="email">Email Address: </label>
+                        <input class="form-control" required type="text" name="email" id = "email"  onchange="email_validate(this.value);" />
+                        <div class="status" id="status"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-4">
+                        <label for="username">User name:  <small>This will be your login user name</small> </label>
+                        <input class="form-control" type="text" name="username" id = "txt" onkeyup = "Validate(this)" placeholder="minimum 6 letters" required />
+                        <div id="errLast"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-4">
+                        <label for="password">Password: </label>
+                        <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="pass1" /> </p>
+
+                        <label for="password"> Password Confirm: </label>
+                        <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Enter again to validate"  id="pass2" onkeyup="checkPass(); return false;" />
+                        <span id="confirmMessage" class="confirmMessage"></span>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="container">
+
+
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio">A+
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio">A-
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio">B+
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio">B-
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio">AB+
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio">AB-
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio">O+
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio">O-
+                        </label>
+
+
+                    </div>
+
+                    <div class="clearfix"></div>
+                    </br>
+                    <div class="form-group col-xs-4" >
+                        <label for="phonenumber">Phone Number: </label>
+                        <input required type="text" name="phonenumber" id="phone" class="form-control phone" maxlength="28" onkeyup="validatephone(this);" placeholder="not used for marketing"/>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-4">
+
+                        <?php //$date_entered = date('m/d/Y H:i:s'); ?>
+                        <input type="hidden" value="<?php //echo $date_entered; ?>" name="dateregistered">
+                        <input type="hidden" value="0" name="activate" />
+
+
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <input class="btn btn-success" type="submit" name="submit_reg" value="Register">
+                        <input class="btn btn-danger" type="reset" name="submit_reg" value="Reset">
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                </fieldset>
+            </form><!-- ends register form -->
+
+            <script type="text/javascript">
+                document.getElementById("field_terms").setCustomValidity("Please indicate that you accept the Terms and Conditions");
+            </script>
+
+        </div><!-- ends col-6 -->
+
+
+
+    </div>
+</div>
+</body>
+</html>
