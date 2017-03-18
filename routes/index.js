@@ -1,7 +1,9 @@
+var express = require('express');
+var router = express.Router();
 
-module.exports = function(router, db){ //use db for db operations
-    router.get('/', function (req, res, next) {
-        res.render('index', { title: 'homepage' });
-    });
-    return router;
-};
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
+module.exports = router;
