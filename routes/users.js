@@ -1,9 +1,8 @@
-var express = require('express');
-var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+module.exports = function(router, db){ //use db for db operations
+    router.get('/', function (req, res, next) {
+        res.send('respond with a resource');
+    });
+    return router;
+};
 
-module.exports = router;
