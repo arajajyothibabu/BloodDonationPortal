@@ -44,13 +44,13 @@ MongoClient.connect(mongoDBUrl, function(err, database) {
     var index = require('./routes/index')(router, db);
     var users = require('./routes/users')(router, db);
     var donor = require('./routes/donor')(router, db);
-    var recepient = require('./routes/recepient')(router, db);
+    var recipient = require('./routes/recipient')(router, db);
 
     //TODO: same as above use the rest fo routes and views
     app.use('/', index);
     app.use('/users', users);
     app.use('/donor', donor);
-    app.use('/recepient', recepient);
+    app.use('/recipient', recipient);
 
     app.use(express.static('public'));
 

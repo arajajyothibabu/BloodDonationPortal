@@ -29,12 +29,9 @@
     <div class="row">
         <div class="col-md-6">
             <form action="" method="post" id="fileForm" role="form">
-                <legend class="text-center">Welcome Recepient...!<span class="req"></span></legend>
+                <legend class="text-center">Welcome Recipient...!<span class="req"></span></legend>
 
-
-
-
-                    <div class="form-group col-xs-4">
+                    <div class="form-group">
                         <label for="bloodgroup">Select Blood Group: </label>
                         <select class="form-control" name="Blood group">
                             <option value="na" name="default">Select</option>
@@ -46,44 +43,26 @@
                             <option value="AB-"name="AB-">AB-</option>
                             <option value="O+"name="O+">O+</option>
                             <option value="O-"name="O-">O-</option>
-
                         </select>
                     </div>
 
-
-
-
-
-
-
                     <div class="clearfix"></div>
-                    <div class="form-group col-xs-4">
+                    <div class="form-group">
                         <label for="location"> Address: </label>
-                        <textarea class="form-control" placeholer="Message" id="location">
-                                      </textarea>
-                        <div id="errFirst"></div>
+                        <textarea class="form-control" placeholer="Message" id="location"></textarea>
                     </div>
 
+                    <div class="form-group">
 
-                    <div class="clearfix"></div>
-                    <br>
-                    <div class="form-group col-xs-2 >
-            <label><b>Radius Restriction(Km)</b> </label>
+                        <label><b>Radius Restriction(Km)</b> </label>
 
-                <input required type="textbox"  name="radius" id="radius" class="form-control phone" maxlength="28" onkeyup="validatephone(this);" /></form>
+                        <input required type="number" name="radius" id="radius" class="form-control" />
+                    </div>
 
             </form>
         </div>
         <div class="clearfix"></div>
-        <div class="form-group col-xs-4">
-
-            <?php //$date_entered = date('m/d/Y H:i:s'); ?>
-            <input type="hidden" value="<?php //echo $date_entered; ?>" name="dateregistered">
-            <input type="hidden" value="0" name="activate" />
-
-
-
-        </div>
+        <div class="form-group col-xs-4"></div>
         <div class="clearfix"></div>
         <div class="form-group container wrapper">
             <p>
@@ -104,16 +83,6 @@
             <input class="form-control" id="inputlg" type="text">
         </div>
         <div class="clearfix"></div>
-        <hr>
-        <div class="container">
-            <b>Donor details</b>
-            <div class="row">
-                <div class="col-md-6">
-                </div>
-            </div>
-        </div>
-
-                  </form><!-- ends register form -->
 
         <script type="text/javascript">
             document.getElementById("field_terms").setCustomValidity("Please indicate that you accept the Terms and Conditions");
