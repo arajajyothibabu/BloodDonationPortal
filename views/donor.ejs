@@ -1,0 +1,138 @@
+<html>
+<head>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/newjs.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/newcss.css">
+    <script type="text/javascript">
+        function greeting(){
+            alert("Thank you.. you have entered vadlid information!")
+        }
+    </script>
+    <style>
+        body {
+            background-image: url("/images/blood.png");
+            background-repeat: no-repeat;
+            background-size:600px 600px;
+            background-position:right;
+
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="" method="post" id="fileForm" role="form" onsubmit="greeting()" >
+                <fieldset><legend class="text-center">Welcome Donor...Give your Valid Information!!<span class="req"></span></legend>
+
+
+
+                    <div class="form-group col-xs-8">
+                        <label for="firstname"> Name: </label>
+                        <input class="form-control" type="text" name="firstname" id = "txt" onkeyup = "Validate(this)" required />
+                        <div id="errFirst"></div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="form-group col-xs-8">
+                        <label for="email">Email Address: </label>
+                        <input class="form-control" required type="text" name="email" id = "email"  onchange="email_validate(this.value);" />
+                        <div class="status" id="status"></div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+
+                    <div class="clearfix"></div>
+                    <br>
+                    <div class="form-group col-xs-8" >
+                        <label for="phonenumber">Phone Number: </label>
+                        <input required type="text" name="phonenumber" id="phone" class="form-control phone" maxlength="28" onkeyup="validatephone(this);"/>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-8">
+                        <label for="bloodgroup">Select Blood Group: </label>
+                        <select class="form-control" name="Blood group">
+                            <option value="na" name="default">Select</option>
+                            <option value="A+" name="A+">A+</option>
+                            <option value="A-" name="A-">A-</option>
+                            <option value="B+"name="B+">B+</option>
+                            <option value="B-"name="B-">B-</option>
+                            <option value="AB+"name="AB+">AB+</option>
+                            <option value="AB-"name="AB-">AB-</option>
+                            <option value="O+"name="O+">O+</option>
+                            <option value="O-"name="O-">O-</option>
+
+                        </select>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-8">
+                        <label for="location"> Address: </label>
+                        <textarea class="form-control" placeholer="Message" id="location">
+                                      </textarea>
+                        <div id="errFirst"></div>
+                    </div>
+
+                    <div class="form-group col-xs-4">
+
+                        <?php //$date_entered = date('m/d/Y H:i:s'); ?>
+                        <input type="hidden" value="<?php //echo $date_entered; ?>" name="dateregistered">
+                        <input type="hidden" value="0" name="activate" />
+
+
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info " >Submit</button>
+                        <input class="btn btn-danger" type="reset" name="submit_reg" value="Reset">
+                    </div>
+                    <div class="container">
+                        <!-- Trigger the modal with a button -->
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Hello!!</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>You have Successfully Enter Details..</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="">
+
+                    </div>
+                </fieldset>
+            </form><!-- ends register form -->
+
+            <script type="text/javascript">
+                document.getElementById("field_terms").setCustomValidity("Please indicate that you accept the Terms and Conditions");
+            </script>
+
+        </div><!-- ends col-6 -->
+
+
+
+    </div>
+</div>
+</body>
+</html>
