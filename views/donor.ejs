@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/newcss.css">
     <script type="text/javascript">
         function greeting(){
-            alert("Thank you.. you have entered vadlid information!")
+            alert("Thank you.. you have entered valid information!")
         }
     </script>
     <style>
@@ -70,15 +70,12 @@
                     <div class="clearfix"></div>
                     <div class="form-group col-xs-8">
                         <label for="location"> Address: </label>
-                        <textarea class="form-control" placeholer="Message" id="location">
-                                      </textarea>
-                        <div id="errFirst"></div>
+                        <textarea class="form-control" placeholer="Message" id="address"></textarea>
                     </div>
 
                     <div class="form-group col-xs-4">
 
-                        <?php //$date_entered = date('m/d/Y H:i:s'); ?>
-                        <input type="hidden" value="<?php //echo $date_entered; ?>" name="dateregistered">
+                        <input type="hidden" value="" name="dateregistered">
                         <input type="hidden" value="0" name="activate" />
 
 
