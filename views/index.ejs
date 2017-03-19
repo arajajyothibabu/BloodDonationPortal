@@ -159,13 +159,17 @@
               <br>
               <p ng-bind="message"></p>
               <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                   <label for="inputlg"> Total count of Records</label>
-                  <h3 align="center" ng-bind="performance.count">2000</h3>
+                  <h3 align="center" ng-bind="performance.total">2000</h3>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                   <label for="inputlg"> Number of Records fetched</label>
-                  <h3 align="center" ng-bind="performance.records">200</h3>
+                  <h3 align="center" ng-bind="performance.fetched">200</h3>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputlg"> Time taken to query</label>
+                  <h3 align="center"><span ng-bind="performance.time"></span> secs</h3>
                 </div>
               </div>
             </div>
