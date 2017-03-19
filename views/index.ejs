@@ -11,6 +11,7 @@
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
   <script type="text/javascript" src="/javascripts/newjs.js"></script>
 </head>
 
@@ -49,7 +50,7 @@
 </nav><!-- End navbar -->
 
 <!-- jumbotron-->
-<div class="jumbotron">
+<div class="jumbotron" ng-app="postApp">
   <div class="container text-center">
     <img src="/images/123.png"></img>
     <h1>Blood Donation Portal</h1>
@@ -62,30 +63,30 @@
         </ul>
 
         <div class="tab-content">
-          <div id="have" class="tab-pane fade in active">
+          <div id="have" class="tab-pane fade in active" ng-controller="donorPostController">
             <div class="container">
               <div class="row">
                 <div class="col-md-6">
-                  <form action="" method="post" id="fileForm" role="form" onsubmit="greeting()" >
+                  <form role="form" name="donorForm" ng-submit="submitForm()">
                       <div class="form-group">
                         <label for="firstname"> Name: </label>
-                        <input class="form-control" type="text" name="firstname" id = "txt" onkeyup = "Validate(this)" required />
+                        <input ng-model="donor.name" class="form-control" type="text" name="firstname" required />
                         <div id="errFirst"></div>
                       </div>
                       <div class="clearfix"></div>
 
                       <div class="form-group">
                         <label for="email">Email Address: </label>
-                        <input class="form-control" required type="text" name="email" id = "email"  onchange="email_validate(this.value);" />
+                        <input ng-model="donor.email" class="form-control" required type="email" name="email" />
                         <div class="status" id="status"></div>
                       </div>
                       <div class="form-group">
                         <label for="phonenumber">Phone Number: </label>
-                        <input required type="text" name="phonenumber" id="phone" class="form-control phone" maxlength="28" onkeyup="validatephone(this);"/>
+                        <input ng-model="donor.phone" required type="text" name="phonenumber" class="form-control phone" maxlength="10"/>
                       </div>
                       <div class="form-group">
                         <label for="bloodgroup">Select Blood Group: </label>
-                        <select class="form-control" name="blood">
+                        <select class="form-control" name="blood" ng-model="donor.group">
                           <option value="A+">A+</option>
                           <option value="A-">A-</option>
                           <option value="B+">B+</option>
@@ -97,14 +98,19 @@
                         </select>
                       </div>
                       <div class="form-group">
-                        <label for="location"> Address: </label>
-                        <textarea class="form-control" placeholer="Message" id="address"></textarea>
+                        <label for="location"> Location: </label>
+                        <input class="form-control" placeholer="Message" id="donor-location" ng-model="donor.location">
                       </div>
                       <div class="form-group">
-                        <button type="submit" class="btn btn-info " >Submit</button>
+                        <label for="location"> Address: </label>
+                        <textarea class="form-control" placeholer="Message" id="address" ng-model="donor.address"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-info">Submit</button>
                         <input class="btn btn-danger" type="reset" name="submit_reg" value="Reset">
                       </div>
                   </form>
+                  <p ng-bind="message"></p>
                 </div>
                 <div class="col-md-6">
                   <!--TODO: Some image here-->
@@ -113,14 +119,14 @@
             </div>
           </div>
 
-          <div id="need" class="tab-pane fade">
+          <div id="need" class="tab-pane fade" ng-controller="recipientPostController">
             <br>
             <div class="container">
-              <form action="" method="post" id="fileForm" role="form">
+              <form role="form" name="recipientForm" ng-submit="submitForm()">
                 <div class="row">
                   <div class="col-md-3">
                     <div class="form-group">
-                      <select class="form-control" name="blood">
+                      <select class="form-control" name="blood" ng-model="recipient.group">
                         <option value="" >--Blood Group--</option>
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
@@ -135,29 +141,31 @@
                   </div>
                   <div class="col-md-3">
                     <div class="form-group">
-                      <input class="form-control" placeholder="Location" id="location" />
+                      <input ng-model="recipient.location" name="location" class="form-control" placeholder="Location" id="recipient-location" />
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="form-group">
-                      <input required placeholder="Radius Restriction(Km)" type="number" name="radius" id="radius" class="form-control" />
+                      <input ng-model="recipient.radius" required placeholder="Radius Restriction(Km)" type="number" name="radius" id="radius" class="form-control" />
                     </div>
                   </div>
                   <div class="col-md-3">
-                      <button type="button" class="btn btn-success form-control">
+                      <button type="submit" class="btn btn-success form-control">
                         <span class="glyphicon glyphicon-search"></span> Search
                       </button>
                   </div>
                 </div>
               </form>
+              <br>
+              <p ng-bind="message"></p>
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="inputlg"> Total count of Records</label>
-                  <h3 align="center">2000</h3>
+                  <h3 align="center" ng-bind="performance.count">2000</h3>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputlg">Number of Records searched</label>
-                  <h3 align="center">200</h3>
+                  <label for="inputlg"> Number of Records fetched</label>
+                  <h3 align="center" ng-bind="performance.records">200</h3>
                 </div>
               </div>
             </div>
@@ -393,5 +401,50 @@
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script>
+
+    var postApp = angular.module('postApp', []);
+
+    postApp.controller('donorPostController', function($scope, $http) {
+        $scope.donor = {};
+        $scope.submitForm = function() {
+            // Posting data to php file
+            $http({
+                method  : 'POST',
+                url     : '/donor',
+                data    : $scope.donor, //forms user object
+                headers : {'Content-Type': 'application/json'}
+            }).success(function(data) {
+                $scope.message = data ? "Successfully saved..!" : "Something went wrong. Please try again..!";
+            }).error(function () {
+                $scope.message = "Something went wrong. Please try again..!";
+            });
+        };
+    });
+
+    postApp.controller('recipientPostController', function($scope, $http) {
+        $scope.recipient = {};
+        $scope.donors = [];
+        $scope.performance = {};
+        $scope.submitForm = function() {
+            // Posting data to php file
+            $http({
+                method  : 'POST',
+                url     : '/donors',
+                data    : $scope.recipient, //forms user object
+                headers : {'Content-Type': 'application/json'}
+            }).success(function(data) {
+                if(data){
+                    $scope.performance = data.performance || {};
+                    $scope.donors = data.donors || [];
+                }else {
+                    $scope.message = "No donors found..!";
+                }
+            }).error(function () {
+                $scope.message = "Something went wrong. Please try again..!";
+            });
+        };
+    });
+</script>
 </body>
 </html>
