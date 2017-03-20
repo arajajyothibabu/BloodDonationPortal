@@ -435,7 +435,7 @@
         $scope.submitForm = function() {
             getLocationCoordinates($scope.donor.location, function (coordinates) {
                 if(coordinates[0] === 0 && coordinates[1] === 0){
-                    $scope.message = "Location Not Found. Please another location..!";
+                    $scope.message = "Location Not Found. Please try another location..!";
                     return;
                 }
                 var body = Object.assign({}, $scope.donor, {location: coordinates});
@@ -458,16 +458,16 @@
         $scope.donors = [];
         $scope.performance = {};
         $scope.submitForm = function() {
-            getLocationCoordinates($scope.donor.location, function (coordinates) {
+            getLocationCoordinates($scope.recipient.location, function (coordinates) {
                 if(coordinates[0] === 0 && coordinates[1] === 0){
-                    $scope.message = "Location Not Found. Please another location..!";
+                    $scope.message = "Location Not Found. Please try another location..!";
                     return;
                 }
                 var body = Object.assign({}, $scope.recipient, {location: coordinates});
                 $http({
                     method: 'POST',
                     url: '/donors',
-                    data: $scope.recipient, //forms user object
+                    data: body, //forms user object
                     headers: {'Content-Type': 'application/json'}
                 }).success(function (data) {
                     if (data) {
