@@ -407,22 +407,48 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script>
+  function getLocationCoordinates(location, successcallback, errorCallback){
+      $.ajax("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDa52hPfIAM6yJVUuy9MJg7EYEO-ofXwM8&address=" + location).done(function (data) {
+          console.log("CoOrdinates -> ", data);
+          if(typeof successcallback === 'function'){
+              var coordinates = [0, 0]; //default co-ordinates
+              if(data.results.length > 0){
+                  var location = data.results[0].geometry.location;
+                  coordinates[0] = location.lng;
+                  coordinates[1] = location.lat;
+              }
+              successcallback(coordinates);
+          }
+      }).fail(function(error){
+          console.log("Error -> ", error);
+          if(typeof errorCallback === 'function')
+            errorCallback();
+      })
+  }
+</script>
+<script>
 
     var postApp = angular.module('postApp', []);
 
     postApp.controller('donorPostController', function($scope, $http) {
         $scope.donor = {};
         $scope.submitForm = function() {
-            // Posting data to php file
-            $http({
-                method  : 'POST',
-                url     : '/donor',
-                data    : $scope.donor, //forms user object
-                headers : {'Content-Type': 'application/json'}
-            }).success(function(data) {
-                $scope.message = data ? "Successfully saved..!" : "Something went wrong. Please try again..!";
-            }).error(function () {
-                $scope.message = "Something went wrong. Please try again..!";
+            getLocationCoordinates($scope.donor.location, function (coordinates) {
+                if(coordinates[0] === 0 && coordinates[1] === 0){
+                    $scope.message = "Location Not Found. Please another location..!";
+                    return;
+                }
+                var body = Object.assign({}, $scope.donor, {location: coordinates});
+                $http({
+                    method  : 'POST',
+                    url     : '/donor',
+                    data    : body, //forms user object
+                    headers : {'Content-Type': 'application/json'}
+                }).success(function(data) {
+                    $scope.message = data ? "Successfully saved..!" : "Something went wrong. Please try again..!";
+                }).error(function () {
+                    $scope.message = "Something went wrong. Please try again..!";
+                });
             });
         };
     });
@@ -432,21 +458,27 @@
         $scope.donors = [];
         $scope.performance = {};
         $scope.submitForm = function() {
-            // Posting data to php file
-            $http({
-                method  : 'POST',
-                url     : '/donors',
-                data    : $scope.recipient, //forms user object
-                headers : {'Content-Type': 'application/json'}
-            }).success(function(data) {
-                if(data){
-                    $scope.performance = data.performance || {};
-                    $scope.donors = data.donors || [];
-                }else {
-                    $scope.message = "No donors found..!";
+            getLocationCoordinates($scope.donor.location, function (coordinates) {
+                if(coordinates[0] === 0 && coordinates[1] === 0){
+                    $scope.message = "Location Not Found. Please another location..!";
+                    return;
                 }
-            }).error(function () {
-                $scope.message = "Something went wrong. Please try again..!";
+                var body = Object.assign({}, $scope.recipient, {location: coordinates});
+                $http({
+                    method: 'POST',
+                    url: '/donors',
+                    data: $scope.recipient, //forms user object
+                    headers: {'Content-Type': 'application/json'}
+                }).success(function (data) {
+                    if (data) {
+                        $scope.performance = data.performance || {};
+                        $scope.donors = data.donors || [];
+                    } else {
+                        $scope.message = "No donors found..!";
+                    }
+                }).error(function () {
+                    $scope.message = "Something went wrong. Please try again..!";
+                });
             });
         };
     });
