@@ -6,7 +6,7 @@ module.exports = function(router, db){ //use db for db operations
         db.collection(donorCollection).find({
             "location": {
                 $near: body.location,
-                $maxDistance: body.radius / 1000 //into KM
+                $maxDistance: body.radius * 1000 //into meters
             },
             group: body.group
         }).toArray(function (err, response) {
