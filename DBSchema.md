@@ -11,7 +11,7 @@
     db.donors.createIndex({'location': '2d'})
 
 #### Donor Model
-```JSON
+```
 {
     _id: ObjectId,
     name: string,
@@ -23,11 +23,12 @@
     date: Date
 }
 
+
 ```
 
 #### inserting into donors collection
 
-    `db.donors.insert(donorModel)`
+    db.donors.insert(DonorModel)
 
 #### querying donors collection with radius and location
 ```
