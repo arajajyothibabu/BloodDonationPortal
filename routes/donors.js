@@ -1,3 +1,5 @@
+var bloodGroupsCompatibilityMap = require('./utils').bloodGroupsCompatibilityMap;
+
 var donorCollection = "donors";
 module.exports = function(router, db){ //use db for db operations
     router.post('/donors', function (req, res, next) {
@@ -8,7 +10,7 @@ module.exports = function(router, db){ //use db for db operations
                 $near: body.location,
                 $maxDistance: body.radius * 1000 //into meters
             },
-            group: body.group
+            group: {'$in': bloodGroupsCompatibilityMap[body.group]} //checking for compatible groups
         }).toArray(function (err, response) {
             var donors = [];
             if(response){
