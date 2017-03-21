@@ -428,6 +428,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script>
   function getLocationCoordinates(location, successcallback, errorCallback){
+      console.log("Location => ", location);
       $.ajax("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDa52hPfIAM6yJVUuy9MJg7EYEO-ofXwM8&address=" + location).done(function (data) {
           console.log("CoOrdinates -> ", data);
           if(typeof successcallback === 'function'){
@@ -453,6 +454,7 @@
     postApp.controller('donorPostController', function($scope, $http) {
         $scope.donor = {};
         $scope.submitForm = function() {
+            $scope.message = "Sending...";
             getLocationCoordinates($scope.donor.location, function (coordinates) {
                 if(coordinates[0] === 0 && coordinates[1] === 0){
                     $scope.message = "Location Not Found. Please try another location..!";
@@ -479,6 +481,7 @@
         $scope.performance = {};
         $scope.showDonors = false;
         $scope.submitForm = function() {
+            $scope.message = "Searching...";
             $scope.showDonors = false;
             getLocationCoordinates($scope.recipient.location, function (coordinates) {
                 if(coordinates[0] === 0 && coordinates[1] === 0){
@@ -497,6 +500,8 @@
                         $scope.donors = data.donors || [];
                         if(data.donors && data.donors.length > 0) {
                             $scope.showDonors = true;
+                        }else{
+                            $scope.message = "No donors found..!";
                         }
                     } else {
                         $scope.message = "No donors found..!";
