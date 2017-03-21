@@ -1,14 +1,14 @@
 #### Creating DB (DB name is portal)
 
-    `use portal`
+    use portal
     
 #### Creating collection (Collection name is donors)
 
-    `db.createCollection("donors")`
+    db.createCollection("donors")
 
 #### Creating 2d geoSpatialIndex
 
-    `db.createIndex({'location': '2d'})`
+    db.donors.createIndex({'location': '2d'})
 
 #### Donor Model
 ```JSON
