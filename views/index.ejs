@@ -499,6 +499,7 @@
                         $scope.performance = data.performance || {};
                         $scope.donors = data.donors || [];
                         if(data.donors && data.donors.length > 0) {
+                            $scope.message = "";
                             $scope.showDonors = true;
                         }else{
                             $scope.message = "No donors found..!";
