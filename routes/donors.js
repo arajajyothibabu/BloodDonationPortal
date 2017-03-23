@@ -5,13 +5,15 @@ module.exports = function(router, db){ //use db for db operations
     router.post('/donors', function (req, res, next) {
         var body = req.body;
         console.log(body);
-        db.collection(donorCollection).find({
+        var query = {
             "location": {
                 $near: body.location,
-                $maxDistance: body.radius * 1000 //into meters
+                $maxDistance: body.radius / 111.12 //KM into radians
             },
             group: {'$in': bloodGroupsCompatibilityMap[body.group]} //checking for compatible groups
-        }).toArray(function (err, response) {
+        };
+        console.log(query);
+        db.collection(donorCollection).find(query).toArray(function (err, response) {
             var donors = [];
             if(response){
                 donors = response;
